@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "ubuntu_ami" {
   type        = string
-  description = "Ubuntu Server 26.04 LTS"
-  default     = "ami-04bd74efcade5de13"
+  description = "Ubuntu Server 24.04 LTS"
+  default     = "ami-084df9e6ad4622caf"
 }
 

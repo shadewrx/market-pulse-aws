@@ -28,3 +28,7 @@ jobs:
 
       - name: Validate Terraform
         run: terraform validate
+
+defaults:
+  run:
+    working-directory: infrastructure

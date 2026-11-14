@@ -37,7 +37,7 @@ resource "aws_route_table_association" "public_subnet_route" {
   subnet_id      = aws_subnet.market_pulse_sbnt_public.id
 }
 
-resource "aws_security_group" "sg_public" {
+resource "aws_security_group" "sg_k8s_nodes" {
   vpc_id = aws_vpc.main_vpc.id
   tags = {
     Name = "public-egress-sg"
@@ -45,14 +45,14 @@ resource "aws_security_group" "sg_public" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "egress_public" {
-  security_group_id = aws_security_group.sg_public.id
+  security_group_id = aws_security_group.sg_k8s_nodes.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1"
 }
 
 
 resource "aws_vpc_security_group_ingress_rule" "ingress_public" {
-  security_group_id            = aws_security_group.sg_public.id
-  referenced_security_group_id = aws_security_group.sg_public.id
+  security_group_id            = aws_security_group.sg_k8s_nodes.id
+  referenced_security_group_id = aws_security_group.sg_k8s_nodes.id
   ip_protocol                  = "-1"
 }
